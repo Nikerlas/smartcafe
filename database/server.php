@@ -104,7 +104,7 @@ if (isset($_POST['login_user'])) {
                 
                 // Page on which the user is sent
                 // to after logging in
-                header('location: halaman_admin.php');
+                header('location: admin/halaman_admin.php');
             }else if($data['level']=="pelanggan"){
                 // Storing username in session variable
                 $_SESSION['username'] = $username;

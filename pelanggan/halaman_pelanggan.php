@@ -9,7 +9,7 @@ session_start();
 // to allow the user to login
 if (!isset($_SESSION['username'])) {
 	$_SESSION['msg'] = "You have to log in first";
-	header('location: index.php');
+	header('location: ../index.php');
 }
 
 // Logout button will destroy the session, and
@@ -19,7 +19,7 @@ if (!isset($_SESSION['username'])) {
 if (isset($_GET['logout'])) {
 	session_destroy();
 	unset($_SESSION['username']);
-	header("location: index.php");
+	header("location: ../index.php");
 }
 ?>
 
@@ -36,7 +36,7 @@ if (isset($_GET['logout'])) {
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css' />
 </head>
 
-<body style="background-image: url(../image/bg1.jpg);">
+<body>
   <!-- Navbar start -->
   <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <a class="navbar-brand" href="halaman_pelanggan.php">&nbsp;&nbsp;Smart Cafe</a>
@@ -153,7 +153,7 @@ if (isset($_GET['logout'])) {
 
     function load_cart_item_number() {
       $.ajax({
-        url: 'action.php',
+        url: '../database/action.php',
         method: 'get',
         data: {
           cartItem: "cart_item"
