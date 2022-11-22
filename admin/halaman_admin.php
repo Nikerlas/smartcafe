@@ -1,21 +1,12 @@
 <?php
-// Starting the session, to use and
-// store data in session variable
+include "../database/koneksi.php";
 session_start();
 
-// If the session variable is empty, this
-// means the user is yet to login
-// User will be sent to 'login.php' page
-// to allow the user to login
 if (!isset($_SESSION['username'])) {
 	$_SESSION['msg'] = "You have to log in first";
 	header('location: ../index.php');
 }
 
-// Logout button will destroy the session, and
-// will unset the session variables
-// User will be headed to 'login.php'
-// after logging out
 if (isset($_GET['logout'])) {
 	session_destroy();
 	unset($_SESSION['username']);
@@ -26,78 +17,47 @@ if (isset($_GET['logout'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.scss" rel="stylesheet">
-    <title>Admin</title>
+    <title>Data Stok Barang</title>
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css' />
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css' />
 </head>
+<style>
+body{
+  background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+  background: linear-gradient(to right, #25c481, #25b7c4);
+  font-family: 'Roboto', sans-serif;
+}
+</style>
 <body>
-<div id="page">
-  <div class="navigation"><a class="active" href="" onClick=" onRouteClick('a'); return false; ">admin</a><a href="" onClick=" onRouteClick('b'); return false; ">add</a><a href="" onClick=" onRouteClick('c'); return false; ">history</a></div>
-  <div class="loader"></div>
-  <div class="container">
-    <div class="a">
-      <div class="at ac">
-			<center>
-				<h5>Selamat Datang <br><?php echo $_SESSION['username']?></h5>
-			</center>
-		</div>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" href="halaman_admin.php">&nbsp;&nbsp;Smart Cafe</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link"><?php echo $_SESSION['username']?></a>
+        </li>
+      </ul>
     </div>
-  </div>
-  <div class="container">
-    <div class="b">
-      <div class="bt ac">
-		
-	  </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="c">
-      <div class="ct ac">contact</div>
-    </div>
-  </div>
-</div>
+  </nav>
+    <center>
+    <br>
+	<br>
+	<br>
+		<h1>Selamat Datang <?php echo $_SESSION['username']?></h1>
+		<br>
+		<br>
+        <div class="link2">
+        <br>
+        <a href="tambah_barang.html">TAMBAH STOK BARANG</a> | <a href="stok_barang.php">LIHAT STOK BARANG</a> | <a href="lihat_transaksi.php">LIHAT TRANSAKSI</a>        
+        </div>
+		<br>
 
-<script>
-	const appRoot = document.getElementById("page");
-	const nav = document.querySelector(".navigation");
-	const root=document.documentElement;
-	const endTransition = () => {
-	const loader = document.querySelector(".loader");
-	loader.addEventListener("transitionend", () => {
-		loader.style.transform = "translateX(100%)";
-		root.classList.remove("disable-hover");
-	});
-	loader.style.transform = "";
-};
+        <p style="color:white">@SMKN 9 Semarang</p>
 
-const startTransition = () => {
-	const loader = document.querySelector(".loader");
-	loader.style.transform = "translateX(100%)";
-	appRoot.dataset.route = "a";
-};
-
-nav.addEventListener("click", (e) => {
-	if (e.target.nodeName === "A") {
-		let a = Array.from(nav.children).find((v) => v.closest(".active"));
-		root.classList.add("disable-hover");
-		a.classList.remove("active");
-		e.target.classList.add("active");
-		e.preventDefault();
-	}
-});
-
-const onRouteClick = (route) => {
-	if (appRoot.dataset.route === route) return;
-	appRoot.dataset.route = route;
-	endTransition();
-};
-
-window.addEventListener("load", () => {
-	startTransition();
-});
-
-</script>
+    </center>
 </body>
 </html>
+

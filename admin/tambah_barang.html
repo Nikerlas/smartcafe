@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Stok Barang</title>
+</head>
+<style>
+body{
+  background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+  background: linear-gradient(to right, #25c481, #25b7c4);
+  font-family: 'Roboto', sans-serif;
+}
+</style>
+<body>
+    <center>
+    <form action="tambah_barang.php" method="POST">
+        <table border="1">
+            <tr>
+                <td style="color: black"; font-size:"18px">Product Name</td>
+                <td style="padding-left: 20px;"><input type="text" required name="product_name" ></td>
+            </tr>
+            <tr>
+                <td style="color: black"; font-size:"18px">Product Price</td>
+                <td style="padding-left: 20px;"><input type="text" required name="product_price"></td>
+            </tr>
+            <tr>
+                <td style="color: black"; font-size:"18px">Quantity</td>
+                <td style="padding-left: 20px;"><input type="text" required name="product_qty"></td>
+            </tr>
+            <tr>
+                <td style="color: black"; font-size:"18px">Image</td>
+                <td style="padding-left: 20px;"><input type="text" required name="product_image"></td>
+            </tr>
+            <tr>
+                <td style="color: black"; font-size:"18px">Code</td>
+                <td style="padding-left: 20px;"><input type="text" required name="product_code"></td>
+            </tr>
+        </table>
+        <br>
+            <tr>
+                <td></td>
+                <td style="padding-left: 20px;"><input type="submit" name="submit" value="Simpan" onclick="alert('Selamat Data Anda Sudah Terkirim')"></td>
+            </tr>
+</form>
+</center>
+</body>
+</html>
